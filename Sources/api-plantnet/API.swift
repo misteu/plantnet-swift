@@ -25,8 +25,8 @@ public enum PlantNet {
 	/// Gets list of projects (e.g. `Weeds`, `Useful Plants`, etc.) can be set on identify request to narrow down source of results.
 	case getListOfProjects
 	/// Post image as jpeg mime type data.
-	/// Language code (e.g. de or en) to set language of returned identifications. Defaults to `en` when `nil`
-	case postIdentify(image: UIImage, languageCode: String?)
+	/// Language code (e.g. de or en) to set language of returned identifications.
+	case postIdentify(image: UIImage, languageCode: String? = "en")
 
 	var endpoint: URL {
 		var retVal = URL(string: "https://www.google.com")!
