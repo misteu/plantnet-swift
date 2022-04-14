@@ -92,7 +92,7 @@ public enum PlantNet {
 		return request
 	}
 
-	public func request<DTO: Codable>(responseType: DTO.Type = DTO.self, completionHandler: @escaping (Result<DTO, Error>?) -> Void) {
+	public func request<DTO: Codable>(responseType: DTO.Type = DTO.self, completionHandler: @escaping (Result<DTO, PlantNetError>?) -> Void) {
 		codableTask(responseType: responseType,
 					completionHandler: completionHandler)
 			.resume()
@@ -106,24 +106,27 @@ public enum PlantNet {
 		return decoder
 	}
 
-	fileprivate func codableTask<DTO: Codable>(responseType: DTO.Type? = DTO.self, completionHandler: @escaping (Result<DTO, Error>?) -> Void) -> URLSessionDataTask {
+	fileprivate func codableTask<DTO: Codable>(responseType: DTO.Type? = DTO.self, completionHandler: @escaping (Result<DTO, PlantNetError>?) -> Void) -> URLSessionDataTask {
 		return Self.session.dataTask(with: request as URLRequest) { data, response, error in
 			guard let data = data,
 				  error == nil,
 				  let responseType = responseType
 			else {
-				completionHandler(.failure(error ?? NSError(domain: "unknown url session error",
-															code: 0,
-															userInfo: nil )))
+
+				completionHandler(.failure(PlantNetError(statusCode: (error as NSError?)?.code ?? 0,
+														 error: "Error",
+														 message: (error as NSError?)?.domain ?? "unknown")))
 				return
 			}
 			if let result = try? Self.newJSONDecoder().decode(responseType, from: data) {
 				completionHandler(.success(result))
-			} else if let plainTextResult = String(data: data, encoding: .utf8) {
-				// If there is only plain text in the response, we expect it to be an error.
-				completionHandler(.failure(NSError(domain: plainTextResult,
-												   code: 0,
-												   userInfo: nil )))
+			} else if let error = try? JSONDecoder().decode(PlantNetError.self, from: data) {
+				completionHandler(.failure(error))
+			} else {
+				completionHandler(.failure(
+									PlantNetError(statusCode: 0,
+												  error: "undefined",
+												  message: "undefined")))
 			}
 		}
 	}
