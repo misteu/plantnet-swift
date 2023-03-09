@@ -2,7 +2,7 @@
 
 Unofficial Swift Package for communicating with Pl@ntNet API.
 
-To get access to the API you need an API key. See [https://my.plantnet.org/account/doc] for API docs and setting up access in general.
+To get access to the API you need an API key. See [my.plantnet.org/account/doc](https://my.plantnet.org/account/settings) for API docs and setting up access in general.
 
 ## Setup the package
 
