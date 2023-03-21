@@ -2,7 +2,7 @@
 
 Unofficial Swift Package for communicating with Pl@ntNet API.
 
-To get access to the API you need an API key. See [https://my.plantnet.org/account/doc] for API docs and setting up access in general.
+To get access to the API you need an API key. See [my.plantnet.org/](https://my.plantnet.org/) for API docs and setting up access in general.
 
 ## Setup the package
 
@@ -14,7 +14,7 @@ PlantNet.APIKey.configure("YOUR_API_KEY")
 
 ## Endpoints
 
-Currently, not all endpoints (as specified here: [https://my.plantnet.org/account/doc#openapi]) are supported. Also the decoded data might be limited.
+Currently, not all endpoints (as specified here: [https://my.plantnet.org/doc/openapi]) are supported. Also the decoded data might be limited.
 
 The currently supported endpoints are: `POST /v2/identify/{project}`,  `GET /v2/species` and `GET /v2/projects`
 
