@@ -2,7 +2,13 @@
 
 Unofficial Swift Package for communicating with Pl@ntNet API.
 
-To get access to the API you need an API key. See [https://my.plantnet.org/account/doc] for API docs and setting up access in general.
+To get access to the API you need an API key. See [https://my-api.plantnet.org/?tags=my-api] for API docs and setting up access in general.
+
+## Quickstart
+
+There is a demo app written in SwiftUI inside of this repo. Clonse the repo, build and run project inside of [https://github.com/misteu/plantnet-swift/tree/main/PlantnetSwift%20Demo%20App].
+
+Only thing to do is insert your API key inside of `PlantnetSwift_Demo_AppApp.swift`.
 
 ## Setup the package
 
@@ -42,4 +48,3 @@ PlantNet.postIdentify(image: image, languageCode: "de").request(responseType: Id
 }
 
 ```
-

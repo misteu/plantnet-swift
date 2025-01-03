@@ -1,0 +1,15 @@
+{
+  "originHash" : "423289a47be02081015918e2529839f12c12e0612c3e12465dfd676620934c61",
+  "pins" : [
+    {
+      "identity" : "plantnet-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:misteu/plantnet-swift.git",
+      "state" : {
+        "revision" : "04b51a00391dcd9052af9af634b59b9f9af28b36",
+        "version" : "0.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
